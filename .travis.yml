@@ -10,3 +10,4 @@ after_success:
   - docker build -t alfa2beta/multi-nginx ./nginx
   - docker build -t alfa2beta/multi-server ./server
   - docker build -t alfa2beta/multi-worker ./worker
+# take this images and push them to docker hub
