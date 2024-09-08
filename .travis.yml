@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t alfa2beta/react-test -f ./client/Dockerfile.dev ./client
+script:
+  - docker run -e CI=true alfa2beta/react-test npm run test
+after_success:
+  - docker build -t alfa2beta/multi-client ./client
+  - docker build -t alfa2beta/multi-nginx ./nginx
+  - docker build -t alfa2beta/multi-server ./server
+  - docker build -t alfa2beta/multi-worker ./worker
