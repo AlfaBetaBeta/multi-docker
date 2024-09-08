@@ -10,4 +10,8 @@ after_success:
   - docker build -t alfa2beta/multi-nginx ./nginx
   - docker build -t alfa2beta/multi-server ./server
   - docker build -t alfa2beta/multi-worker ./worker
-# take this images and push them to docker hub
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push alfa2beta/multi-client
+  - docker push alfa2beta/multi-nginx
+  - docker push alfa2beta/multi-server
+  - docker push alfa2beta/multi-worker
