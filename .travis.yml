@@ -15,3 +15,14 @@ after_success:
   - docker push alfa2beta/multi-nginx
   - docker push alfa2beta/multi-server
   - docker push alfa2beta/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-3
+  app: multi-docker
+  env: Multi-docker-env
+  bucket_name: elasticbeanstalk-eu-west-3-182399719141
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
